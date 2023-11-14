@@ -1,0 +1,7 @@
+version: "3.4"
+services:
+  development:
+    build:
+        context: .
+        target: development
+    image: development:latest
