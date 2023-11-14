@@ -4,4 +4,4 @@ services:
     build:
         context: .
         target: development
-    image: development:latest
+    image: go-development:latest
