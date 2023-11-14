@@ -4,8 +4,8 @@ services:
     image: go-development:latest
     environment:
       DBHOST: mysql
-      DBUSER: ${DBUSER:-test_user}
-      DBPASS: ${DBPASS:-test_password}
+      DBUSER: test_user
+      DBPASS: test_password
     ports:
       - 8080:8080
     volumes:
@@ -18,8 +18,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: myapp
-      MYSQL_USER: ${DBUSER:-test_user}
-      MYSQL_PASSWORD: ${DBPASS:-test_password}
+      MYSQL_USER: test_user
+      MYSQL_PASSWORD: test_password
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
       - db-data:/var/lib/mysql

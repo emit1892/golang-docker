@@ -1,24 +1,27 @@
-# web-service-gin
+# 環境構築方法
 
-ginとmysqlを使った簡単なwebアプリケーションです。
+## 開発環境
 
-## mysql
+### 1. ビルドを実施し、イメージを作成する
 
-ホストでport 3306で起動してください。
+下記のコマンドを実行します。
 
-## 環境変数
+```cmd
+$ docker-compose -f docker-compose.build.yml build
+```
 
-mysqlを使用するために以下の環境変数を設定してください
+### 2. 開発環境を起動する
 
-- DBUSER
-- DBPASS
+下記のコマンドを実行します。
 
-## database
+```cmd
+$ docker-compose up
+```
 
-- myappでdatabaseを作成してください。
+## 本番環境
 
-- sqlディレクトリ以下にテーブル作成とseedデータ作成のsqlファイルを作成しているので実行してください
+### 1. ビルドを実施し、イメージを作成する
 
-## docker
-
-docker化はしていないため、dockerを使用する場合は適宜コードを書き換えてください。
+```cmd
+$ docker build --target production -t go-production:latest .
+```

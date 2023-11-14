@@ -20,5 +20,4 @@ FROM alpine:3.17 AS production
 WORKDIR /app
 # development-builderのコピー
 COPY --from=development-builder /app/main .
-COPY .env .
 CMD [ "/app/main" ]
