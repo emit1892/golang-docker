@@ -1,0 +1,31 @@
+version: "3.4"
+services:
+  web:
+    image: go-development:latest
+    environment:
+      DBHOST: mysql
+      DBUSER: test_user
+      DBPASS: test_password
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/app
+    depends_on:
+      - "db"
+  db:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: myapp
+      MYSQL_USER: test_user
+      MYSQL_PASSWORD: test_password
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d/
+    ports: 
+      - 3306:3306
+
+volumes:
+  db-data:
